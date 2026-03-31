@@ -1,0 +1,88 @@
+site_name: Accès Badminton — Documentation interne
+site_description: Guide d'administration du système de facturation Accès Badminton V2.0
+site_url: https://onibad-admin-docs.pages.dev/
+docs_dir: mkdocs-content
+
+theme:
+  name: material
+  language: fr
+  palette:
+    - scheme: default
+      primary: green
+      accent: lime
+      toggle:
+        icon: material/brightness-7
+        name: Mode sombre
+    - scheme: slate
+      primary: green
+      accent: lime
+      toggle:
+        icon: material/brightness-4
+        name: Mode clair
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+  icon:
+    logo: material/badminton
+    repo: fontawesome/brands/github
+
+extra:
+  generator: false
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - attr_list
+  - def_list
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+plugins:
+  - search:
+      lang: fr
+
+nav:
+  - Accueil: index.md
+  - Guide de l'opérateur:
+    - operateur/index.md
+    - Démarrage rapide: operateur/demarrage-rapide.md
+    - Réviser les inscriptions: operateur/reviser-inscriptions.md
+    - Facturation: operateur/facturation.md
+    - Liste d'attente: operateur/liste-attente.md
+    - Annulations et remboursements: operateur/annulations-remboursements.md
+    - Outils et corrections: operateur/outils-corrections.md
+    - Nouvelle session: operateur/nouvelle-session.md
+    - Référence: operateur/reference.md
+    - Dépannage: operateur/depannage.md
+  - Configuration:
+    - Installation initiale: configuration/deploiement.md
+    - Autocrat (5 jobs): configuration/autocrat.md
+  - Référence technique:
+    - Architecture V2.0: technique/architecture.md
+    - Modèle de facture: technique/template-facture.md
+    - Modèle notification: technique/template-notification.md
+    - Modèle note de crédit: technique/template-note-credit.md
+    - Modèle avis d'abandon: technique/template-avis-abandon.md
+  - Journal des modifications: changelog.md
