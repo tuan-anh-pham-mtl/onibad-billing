@@ -1,0 +1,2301 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guide d'administration du système de facturation Accès Badminton V2.0">
+      
+      
+      
+        <link rel="canonical" href="https://onibad-admin-docs.pages.dev/configuration/autocrat/">
+      
+      
+        <link rel="prev" href="../deploiement/">
+      
+      
+        <link rel="next" href="../../technique/architecture/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/onibad_logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Autocrat (5 jobs) - Accès Badminton — Documentation interne</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guide-autocrat-configuration-des-5-jobs" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Accès Badminton — Documentation interne" class="md-header__button md-logo" aria-label="Accès Badminton — Documentation interne" data-md-component="logo">
+      
+  <img src="../../assets/images/onibad_logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Accès Badminton — Documentation interne
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Autocrat (5 jobs)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operateur/" class="md-tabs__link">
+          
+  
+  
+  Guide de l'opérateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../deploiement/" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../technique/architecture/" class="md-tabs__link">
+          
+  
+  
+  Référence technique
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Journal des modifications
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Accès Badminton — Documentation interne" class="md-nav__button md-logo" aria-label="Accès Badminton — Documentation interne" data-md-component="logo">
+      
+  <img src="../../assets/images/onibad_logo.jpg" alt="logo">
+
+    </a>
+    Accès Badminton — Documentation interne
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide de l'opérateur
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide de l'opérateur
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide de l'opérateur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/demarrage-rapide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Démarrage rapide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/reviser-inscriptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Réviser les inscriptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/facturation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Facturation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/liste-attente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Liste d'attente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/annulations-remboursements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annulations et remboursements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/outils-corrections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outils et corrections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/nouvelle-session/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nouvelle session
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/depannage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dépannage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploiement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation initiale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocrat (5 jobs)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocrat (5 jobs)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resume-des-5-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Résumé des 5 jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-1-installer-autocrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : Installer Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-2-acceder-a-autocrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : Accéder à Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-1-facture-envoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 1 : Facture — Envoi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 1 : Facture — Envoi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-google-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Google Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-2-accuse-de-reception-paiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 2 : Accusé de réception paiement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 2 : Accusé de réception paiement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-3-notification-de-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 3 : Notification de révision
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 3 : Notification de révision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onglet-source-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onglet source : Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-4-avis-dabandon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 4 : Avis d'abandon
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 4 : Avis d&#39;abandon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onglet-source-suivi-de-facturation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onglet source : Suivi de facturation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-5-note-de-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 5 : Note de crédit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 5 : Note de crédit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onglet-source-notes-de-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onglet source : Notes de crédit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-google-docs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Google Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tester-les-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tester les jobs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tester les jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-facture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 1 : Facture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-accuse-de-reception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 2 : Accusé de réception
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-3-notification-de-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 3 : Notification de révision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-4-avis-dabandon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 4 : Avis d'abandon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-5-note-de-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 5 : Note de crédit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nettoyage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nettoyage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence technique
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Référence technique
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture V2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/template-facture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèle de facture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/template-notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèle notification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/template-note-credit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèle note de crédit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/template-avis-abandon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèle avis d'abandon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal des modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resume-des-5-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Résumé des 5 jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-1-installer-autocrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : Installer Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-2-acceder-a-autocrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : Accéder à Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-1-facture-envoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 1 : Facture — Envoi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 1 : Facture — Envoi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modele-google-docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Google Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-2-accuse-de-reception-paiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 2 : Accusé de réception paiement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 2 : Accusé de réception paiement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-3-notification-de-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 3 : Notification de révision
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 3 : Notification de révision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onglet-source-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onglet source : Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-4-avis-dabandon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 4 : Avis d'abandon
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 4 : Avis d&#39;abandon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onglet-source-suivi-de-facturation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onglet source : Suivi de facturation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-5-note-de-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job 5 : Note de crédit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Job 5 : Note de crédit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onglet-source-notes-de-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onglet source : Notes de crédit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modele-google-docs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modèle Google Docs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-autocrat_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Autocrat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tester-les-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tester les jobs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tester les jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-facture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 1 : Facture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-accuse-de-reception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 2 : Accusé de réception
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-3-notification-de-revision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 3 : Notification de révision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-4-avis-dabandon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 4 : Avis d'abandon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-5-note-de-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 5 : Note de crédit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nettoyage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nettoyage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guide-autocrat-configuration-des-5-jobs">Guide Autocrat — Configuration des 5 jobs<a class="headerlink" href="#guide-autocrat-configuration-des-5-jobs" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Ce guide explique comment configurer Autocrat dans le classeur Google Sheets.
+À faire <strong>une seule fois</strong> lors de l'installation, puis à vérifier en début de session.</p>
+</blockquote>
+<hr />
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Le classeur doit avoir les 8 onglets créés (via <strong>🛠️ Configuration initiale</strong>)</li>
+<li>L'extension <strong>Autocrat</strong> doit être installée depuis le Google Workspace Marketplace</li>
+<li>Vous devez avoir <strong>5 modèles Google Docs</strong> (un par job — voir les sections ci-dessous)</li>
+</ol>
+<hr />
+<h2 id="resume-des-5-jobs">Résumé des 5 jobs<a class="headerlink" href="#resume-des-5-jobs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Nom du job</th>
+<th>Onglet source</th>
+<th>Condition</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Facture — Envoi</td>
+<td>Suivi de facturation</td>
+<td>Statut = <code>Non généré</code></td>
+<td>PDF + courriel</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Accusé réception paiement</td>
+<td>Suivi de facturation</td>
+<td>Statut = <code>Payé</code> ET Reçu envoyé = <code>Non</code></td>
+<td>Courriel</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Notification de révision</td>
+<td>Notifications</td>
+<td>Notification envoyée = <code>Non</code></td>
+<td>Courriel</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Avis d'abandon</td>
+<td>Suivi de facturation</td>
+<td>Statut = <code>Abandonné</code> ET Courriel abandon envoyé = <code>Non</code></td>
+<td>Courriel</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Note de crédit</td>
+<td>Notes de crédit</td>
+<td>Envoyée = <code>Non</code></td>
+<td>PDF + courriel</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="etape-1-installer-autocrat">Étape 1 : Installer Autocrat<a class="headerlink" href="#etape-1-installer-autocrat" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Ouvrez le classeur Google Sheets</li>
+<li>Menu → <strong>Extensions → Modules complémentaires → Télécharger des modules complémentaires</strong></li>
+<li>Recherchez <strong>Autocrat</strong></li>
+<li>Cliquez <strong>Installer</strong> → acceptez les autorisations</li>
+</ol>
+<hr />
+<h2 id="etape-2-acceder-a-autocrat">Étape 2 : Accéder à Autocrat<a class="headerlink" href="#etape-2-acceder-a-autocrat" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Menu → <strong>Extensions → Autocrat → Open</strong></li>
+<li>Le panneau Autocrat s'ouvre sur le côté droit</li>
+</ol>
+<hr />
+<h2 id="job-1-facture-envoi">Job 1 : Facture — Envoi<a class="headerlink" href="#job-1-facture-envoi" title="Permanent link">&para;</a></h2>
+<h3 id="modele-google-docs">Modèle Google Docs<a class="headerlink" href="#modele-google-docs" title="Permanent link">&para;</a></h3>
+<p>Créez un document Google Docs intitulé <strong>« Modèle Facture Accès Badminton »</strong>.</p>
+<p>Utilisez les balises <code>&lt;&lt;nom_colonne&gt;&gt;</code> pour insérer les données. Les noms de colonnes correspondent exactement aux en-têtes du Suivi de facturation.</p>
+<p>Balises disponibles :</p>
+<table>
+<thead>
+<tr>
+<th>Balise</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;&lt;No. Facture&gt;&gt;</code></td>
+<td>FACT-H2026-001</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Nom complet (payeur)&gt;&gt;</code></td>
+<td>Nom du payeur</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Email (payeur)&gt;&gt;</code></td>
+<td>Courriel</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Session&gt;&gt;</code></td>
+<td>H2026</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Adresse client&gt;&gt;</code></td>
+<td>Adresse complète</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Date facture&gt;&gt;</code></td>
+<td>Date de création</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 1 Description&gt;&gt;</code></td>
+<td>Premier article</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 1 Code article&gt;&gt;</code></td>
+<td>Code (AB-ADT-ADV)</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 1 Prix&gt;&gt;</code></td>
+<td>Prix</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 2 Description&gt;&gt;</code> ... <code>&lt;&lt;Ligne 9 Description&gt;&gt;</code></td>
+<td>Articles suivants</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 2 Code article&gt;&gt;</code> ... <code>&lt;&lt;Ligne 9 Code article&gt;&gt;</code></td>
+<td>Codes suivants</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 2 Prix&gt;&gt;</code> ... <code>&lt;&lt;Ligne 9 Prix&gt;&gt;</code></td>
+<td>Prix suivants</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Sous-total&gt;&gt;</code></td>
+<td>Total de la facture</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Joueurs inclus&gt;&gt;</code></td>
+<td>Noms (factures familiales)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Conseil</strong> : les lignes vides (programmes non utilisés) seront vides dans le PDF.
+Mettez les lignes 1-9 dans un tableau et masquez les lignes vides via la mise en page du document.</p>
+</blockquote>
+<h3 id="configuration-autocrat">Configuration Autocrat<a class="headerlink" href="#configuration-autocrat" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Cliquez <strong>+ New Job</strong></li>
+<li><strong>Nom</strong> : <code>Facture — Envoi</code></li>
+<li><strong>Template</strong> : sélectionnez le modèle Google Docs créé ci-dessus</li>
+<li><strong>Output</strong> :</li>
+<li>Format : <strong>PDF</strong></li>
+<li>Nom du fichier : <code>Facture &lt;&lt;No. Facture&gt;&gt;</code></li>
+<li>Dossier : sélectionnez votre dossier Google Drive de factures</li>
+<li><strong>Merge condition</strong> :</li>
+<li>Colonne : <code>Statut</code></li>
+<li>Valeur : <code>Non généré</code></li>
+<li><strong>After merge — Update column</strong> :</li>
+<li>Colonne : <code>Statut</code> → valeur : <code>Envoyé</code></li>
+<li>Colonne : <code>Date envoyé</code> → valeur : <code>&lt;&lt;timestamp&gt;&gt;</code></li>
+<li>Colonne : <code>Lien PDF</code> → valeur : <code>&lt;&lt;file url&gt;&gt;</code></li>
+<li><strong>Email</strong> :</li>
+<li>To : <code>&lt;&lt;Email (payeur)&gt;&gt;</code></li>
+<li>Subject : <code>Facture &lt;&lt;No. Facture&gt;&gt; — Accès Badminton</code></li>
+<li>Body : (voir <a href="../../technique/template-facture/">template-facture.md</a>)</li>
+<li>Attach PDF : <strong>Oui</strong></li>
+<li><strong>Trigger</strong> : <strong>Time-based</strong> → toutes les heures</li>
+</ol>
+<hr />
+<h2 id="job-2-accuse-de-reception-paiement">Job 2 : Accusé de réception paiement<a class="headerlink" href="#job-2-accuse-de-reception-paiement" title="Permanent link">&para;</a></h2>
+<h3 id="configuration-autocrat_1">Configuration Autocrat<a class="headerlink" href="#configuration-autocrat_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Cliquez <strong>+ New Job</strong></li>
+<li><strong>Nom</strong> : <code>Accusé réception paiement</code></li>
+<li><strong>Template</strong> : aucun PDF nécessaire (courriel seulement)</li>
+<li><strong>Merge condition</strong> (2 conditions AND) :</li>
+<li><code>Statut</code> = <code>Payé</code></li>
+<li><code>Reçu envoyé</code> = <code>Non</code></li>
+<li><strong>After merge — Update column</strong> :</li>
+<li><code>Reçu envoyé</code> → <code>Oui</code></li>
+<li><strong>Email</strong> :</li>
+<li>To : <code>&lt;&lt;Email (payeur)&gt;&gt;</code></li>
+<li>Subject : <code>Confirmation de paiement — Facture &lt;&lt;No. Facture&gt;&gt;</code></li>
+<li>Body :</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Bonjour &lt;&lt;Nom complet (payeur)&gt;&gt;,
+
+Nous confirmons la réception de votre paiement de &lt;&lt;Sous-total&gt;&gt; pour la facture &lt;&lt;No. Facture&gt;&gt;.
+
+Programme(s) : &lt;&lt;Programme(s)&gt;&gt;
+Session : &lt;&lt;Session&gt;&gt;
+
+Merci et au plaisir de vous voir sur le terrain!
+
+Accès Badminton
+https://accesbadminton.ca/
+</code></pre></div>
+<ol>
+<li><strong>Trigger</strong> : <strong>Time-based</strong> → toutes les heures</li>
+</ol>
+<hr />
+<h2 id="job-3-notification-de-revision">Job 3 : Notification de révision<a class="headerlink" href="#job-3-notification-de-revision" title="Permanent link">&para;</a></h2>
+<h3 id="onglet-source-notifications">Onglet source : Notifications<a class="headerlink" href="#onglet-source-notifications" title="Permanent link">&para;</a></h3>
+<h3 id="configuration-autocrat_2">Configuration Autocrat<a class="headerlink" href="#configuration-autocrat_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Cliquez <strong>+ New Job</strong></li>
+<li><strong>Nom</strong> : <code>Notification de révision</code></li>
+<li><strong>Template</strong> : aucun PDF nécessaire</li>
+<li><strong>Merge condition</strong> :</li>
+<li><code>Notification envoyée</code> = <code>Non</code></li>
+<li><strong>After merge — Update column</strong> :</li>
+<li><code>Notification envoyée</code> → <code>Oui</code></li>
+<li><strong>Email</strong> :</li>
+<li>To : <code>&lt;&lt;Email&gt;&gt;</code></li>
+<li>Subject : <code>Résultat de votre inscription — Accès Badminton (&lt;&lt;Session&gt;&gt;)</code></li>
+<li>Body :</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Bonjour &lt;&lt;Nom complet&gt;&gt;,
+
+Voici le résultat de votre inscription pour la session &lt;&lt;Session&gt;&gt; :
+
+&lt;&lt;Programme 1&gt;&gt; : &lt;&lt;Décision 1&gt;&gt;
+&lt;&lt;Détail 1&gt;&gt;
+
+&lt;&lt;Programme 2&gt;&gt; : &lt;&lt;Décision 2&gt;&gt;
+&lt;&lt;Détail 2&gt;&gt;
+
+&lt;&lt;Programme 3&gt;&gt; : &lt;&lt;Décision 3&gt;&gt;
+&lt;&lt;Détail 3&gt;&gt;
+
+Si vous avez été accepté(e), vous recevrez votre facture sous peu.
+Si vous êtes sur la liste d&#39;attente, nous vous contacterons si une place se libère.
+
+Accès Badminton
+https://accesbadminton.ca/
+</code></pre></div>
+<blockquote>
+<p><strong>Note</strong> : les lignes vides (Programme 2/3 non utilisés) seront vides.
+Autocrat n'a pas de logique conditionnelle — le joueur verra des lignes vides s'il n'a choisi qu'un programme. C'est acceptable.</p>
+</blockquote>
+<ol>
+<li><strong>Trigger</strong> : <strong>Time-based</strong> → toutes les heures</li>
+</ol>
+<hr />
+<h2 id="job-4-avis-dabandon">Job 4 : Avis d'abandon<a class="headerlink" href="#job-4-avis-dabandon" title="Permanent link">&para;</a></h2>
+<h3 id="onglet-source-suivi-de-facturation">Onglet source : Suivi de facturation<a class="headerlink" href="#onglet-source-suivi-de-facturation" title="Permanent link">&para;</a></h3>
+<h3 id="configuration-autocrat_3">Configuration Autocrat<a class="headerlink" href="#configuration-autocrat_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Cliquez <strong>+ New Job</strong></li>
+<li><strong>Nom</strong> : <code>Avis d'abandon</code></li>
+<li><strong>Template</strong> : aucun PDF nécessaire</li>
+<li><strong>Merge condition</strong> (2 conditions AND) :</li>
+<li><code>Statut</code> = <code>Abandonné</code></li>
+<li><code>Courriel abandon envoyé</code> = <code>Non</code></li>
+<li><strong>After merge — Update column</strong> :</li>
+<li><code>Courriel abandon envoyé</code> → <code>Oui</code></li>
+<li><strong>Email</strong> :</li>
+<li>To : <code>&lt;&lt;Email (payeur)&gt;&gt;</code></li>
+<li>Subject : <code>Annulation de votre inscription — Accès Badminton</code></li>
+<li>Body :</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Bonjour &lt;&lt;Nom complet (payeur)&gt;&gt;,
+
+Nous vous confirmons l&#39;annulation de votre inscription pour la session &lt;&lt;Session&gt;&gt;.
+
+Programme(s) concerné(s) : &lt;&lt;Programme(s)&gt;&gt;
+
+Si vous pensez qu&#39;il s&#39;agit d&#39;une erreur ou si vous souhaitez vous réinscrire,
+veuillez nous contacter à info@accesbadminton.ca.
+
+Accès Badminton
+https://accesbadminton.ca/
+</code></pre></div>
+<ol>
+<li><strong>Trigger</strong> : <strong>Time-based</strong> → toutes les heures</li>
+</ol>
+<hr />
+<h2 id="job-5-note-de-credit">Job 5 : Note de crédit<a class="headerlink" href="#job-5-note-de-credit" title="Permanent link">&para;</a></h2>
+<h3 id="onglet-source-notes-de-credit">Onglet source : Notes de crédit<a class="headerlink" href="#onglet-source-notes-de-credit" title="Permanent link">&para;</a></h3>
+<h3 id="modele-google-docs_1">Modèle Google Docs<a class="headerlink" href="#modele-google-docs_1" title="Permanent link">&para;</a></h3>
+<p>Créez un document <strong>« Modèle Note de Crédit Accès Badminton »</strong>.</p>
+<p>Balises disponibles :</p>
+<table>
+<thead>
+<tr>
+<th>Balise</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;&lt;No. Note de crédit&gt;&gt;</code></td>
+<td>NC-H2026-001</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;No. Facture originale&gt;&gt;</code></td>
+<td>Facture de référence</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Nom complet&gt;&gt;</code></td>
+<td>Nom du joueur</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Date&gt;&gt;</code></td>
+<td>Date d'émission</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 1 Description&gt;&gt;</code></td>
+<td>Article remboursé</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 1 Montant&gt;&gt;</code></td>
+<td>Montant négatif</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Ligne 2 Description&gt;&gt;</code> / <code>&lt;&lt;Ligne 3 Description&gt;&gt;</code></td>
+<td>Autres articles</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Montant total remboursé&gt;&gt;</code></td>
+<td>Total du remboursement</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Solde restant&gt;&gt;</code></td>
+<td>Ce qui reste de la facture originale</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;Raison&gt;&gt;</code></td>
+<td>Motif du remboursement</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuration-autocrat_4">Configuration Autocrat<a class="headerlink" href="#configuration-autocrat_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Cliquez <strong>+ New Job</strong></li>
+<li><strong>Nom</strong> : <code>Note de crédit</code></li>
+<li><strong>Template</strong> : sélectionnez le modèle ci-dessus</li>
+<li><strong>Output</strong> :</li>
+<li>Format : <strong>PDF</strong></li>
+<li>Nom : <code>Note-credit &lt;&lt;No. Note de crédit&gt;&gt;</code></li>
+<li>Dossier : même dossier que les factures</li>
+<li><strong>Merge condition</strong> :</li>
+<li><code>Envoyée</code> = <code>Non</code></li>
+<li><strong>After merge — Update column</strong> :</li>
+<li><code>Envoyée</code> → <code>Oui</code></li>
+<li><code>Lien PDF</code> → <code>&lt;&lt;file url&gt;&gt;</code></li>
+<li><strong>Email</strong> :</li>
+<li>To : <code>&lt;&lt;Email&gt;&gt;</code></li>
+<li>Subject : <code>Note de crédit &lt;&lt;No. Note de crédit&gt;&gt; — Accès Badminton</code></li>
+<li>Body :</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Bonjour &lt;&lt;Nom complet&gt;&gt;,
+
+Veuillez trouver ci-joint la note de crédit &lt;&lt;No. Note de crédit&gt;&gt;
+en référence à la facture &lt;&lt;No. Facture originale&gt;&gt;.
+
+Montant remboursé : &lt;&lt;Montant total remboursé&gt;&gt;
+Raison : &lt;&lt;Raison&gt;&gt;
+
+Le remboursement sera effectué par le même moyen de paiement utilisé.
+
+Accès Badminton
+https://accesbadminton.ca/
+</code></pre></div>
+<ol>
+<li><strong>Trigger</strong> : <strong>Time-based</strong> → toutes les heures</li>
+</ol>
+<hr />
+<h2 id="tester-les-jobs">Tester les jobs<a class="headerlink" href="#tester-les-jobs" title="Permanent link">&para;</a></h2>
+<h3 id="test-1-facture">Test 1 : Facture<a class="headerlink" href="#test-1-facture" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Soumettez une réponse test via le formulaire</li>
+<li>Acceptez l'inscription → Finalisez → Générez la facture</li>
+<li>Lancez Autocrat manuellement : <strong>Extensions → Autocrat → Open → Run</strong> (job Facture)</li>
+<li>Vérifiez :</li>
+<li>✅ PDF reçu par courriel</li>
+<li>✅ Statut passé à <code>Envoyé</code></li>
+<li>✅ Lien PDF dans la colonne M</li>
+</ol>
+<h3 id="test-2-accuse-de-reception">Test 2 : Accusé de réception<a class="headerlink" href="#test-2-accuse-de-reception" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Changez le statut d'une facture à <code>Payé</code>, entrez la date</li>
+<li>Run le job « Accusé réception »</li>
+<li>✅ Courriel reçu, <code>Reçu envoyé</code> = <code>Oui</code></li>
+</ol>
+<h3 id="test-3-notification-de-revision">Test 3 : Notification de révision<a class="headerlink" href="#test-3-notification-de-revision" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Créez une inscription test, acceptez, finalisez</li>
+<li>Run le job « Notification de révision »</li>
+<li>✅ Courriel reçu avec le résumé des décisions</li>
+</ol>
+<h3 id="test-4-avis-dabandon">Test 4 : Avis d'abandon<a class="headerlink" href="#test-4-avis-dabandon" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Marquez une facture comme <code>Abandonné</code></li>
+<li>Run le job « Avis d'abandon »</li>
+<li>✅ Courriel reçu, <code>Courriel abandon envoyé</code> = <code>Oui</code></li>
+</ol>
+<h3 id="test-5-note-de-credit">Test 5 : Note de crédit<a class="headerlink" href="#test-5-note-de-credit" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Émettez une note de crédit (sur une facture payée)</li>
+<li>Run le job « Note de crédit »</li>
+<li>✅ PDF reçu, <code>Envoyée</code> = <code>Oui</code></li>
+</ol>
+<h3 id="nettoyage">Nettoyage<a class="headerlink" href="#nettoyage" title="Permanent link">&para;</a></h3>
+<p>Supprimez les lignes de test dans tous les onglets.
+Réinitialisez les compteurs dans Configuration si nécessaire.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../deploiement/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Installation initiale">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Installation initiale
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../technique/architecture/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Architecture V2.0">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Architecture V2.0
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

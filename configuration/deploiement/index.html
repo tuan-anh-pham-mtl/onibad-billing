@@ -1,0 +1,2102 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guide d'administration du système de facturation Accès Badminton V2.0">
+      
+      
+      
+        <link rel="canonical" href="https://onibad-admin-docs.pages.dev/configuration/deploiement/">
+      
+      
+        <link rel="prev" href="../../operateur/depannage/">
+      
+      
+        <link rel="next" href="../autocrat/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/onibad_logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Installation initiale - Accès Badminton — Documentation interne</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guide-de-deploiement-installation-initiale" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Accès Badminton — Documentation interne" class="md-header__button md-logo" aria-label="Accès Badminton — Documentation interne" data-md-component="logo">
+      
+  <img src="../../assets/images/onibad_logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Accès Badminton — Documentation interne
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installation initiale
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operateur/" class="md-tabs__link">
+          
+  
+  
+  Guide de l'opérateur
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../technique/architecture/" class="md-tabs__link">
+          
+  
+  
+  Référence technique
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Journal des modifications
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Accès Badminton — Documentation interne" class="md-nav__button md-logo" aria-label="Accès Badminton — Documentation interne" data-md-component="logo">
+      
+  <img src="../../assets/images/onibad_logo.jpg" alt="logo">
+
+    </a>
+    Accès Badminton — Documentation interne
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide de l'opérateur
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide de l'opérateur
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide de l'opérateur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/demarrage-rapide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Démarrage rapide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/reviser-inscriptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Réviser les inscriptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/facturation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Facturation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/liste-attente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Liste d'attente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/annulations-remboursements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annulations et remboursements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/outils-corrections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outils et corrections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/nouvelle-session/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nouvelle session
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operateur/depannage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dépannage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation initiale
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation initiale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-1-creer-le-classeur-google-sheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : Créer le classeur Google Sheets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-2-installer-le-code-apps-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : Installer le code Apps Script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-3-executer-la-configuration-initiale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : Exécuter la configuration initiale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-4-configurer-les-valeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : Configurer les valeurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-5-creer-le-dossier-drive-pour-les-factures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 : Créer le dossier Drive pour les factures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-6-configurer-les-tarifs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 6 : Configurer les tarifs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-7-creer-et-lier-le-formulaire-google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 7 : Créer et lier le formulaire Google
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-8-configurer-le-declencheur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 8 : Configurer le déclencheur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-9-configurer-autocrat-5-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 9 : Configurer Autocrat (5 jobs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-10-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 10 : Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 10 : Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-nouvelle-inscription" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 1 : Nouvelle inscription
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-cycle-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 2 : Cycle complet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-3-paiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 3 : Paiement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-4-refus-et-liste-dattente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 4 : Refus et liste d'attente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-5-abandon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 5 : Abandon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-6-note-de-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 6 : Note de crédit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nettoyage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nettoyage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-finale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification finale
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autocrat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocrat (5 jobs)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Référence technique
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Référence technique
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture V2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/template-facture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèle de facture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/template-notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèle notification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/template-note-credit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèle note de crédit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technique/template-avis-abandon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèle avis d'abandon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal des modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-1-creer-le-classeur-google-sheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : Créer le classeur Google Sheets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-2-installer-le-code-apps-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : Installer le code Apps Script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-3-executer-la-configuration-initiale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : Exécuter la configuration initiale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-4-configurer-les-valeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : Configurer les valeurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-5-creer-le-dossier-drive-pour-les-factures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 : Créer le dossier Drive pour les factures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-6-configurer-les-tarifs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 6 : Configurer les tarifs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-7-creer-et-lier-le-formulaire-google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 7 : Créer et lier le formulaire Google
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-8-configurer-le-declencheur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 8 : Configurer le déclencheur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-9-configurer-autocrat-5-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 9 : Configurer Autocrat (5 jobs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-10-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 10 : Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 10 : Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-nouvelle-inscription" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 1 : Nouvelle inscription
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-cycle-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 2 : Cycle complet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-3-paiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 3 : Paiement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-4-refus-et-liste-dattente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 4 : Refus et liste d'attente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-5-abandon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 5 : Abandon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-6-note-de-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 6 : Note de crédit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nettoyage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nettoyage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-finale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification finale
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guide-de-deploiement-installation-initiale">Guide de déploiement — Installation initiale<a class="headerlink" href="#guide-de-deploiement-installation-initiale" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Ce guide est pour la <strong>première installation</strong> du système.
+À suivre une seule fois. Après l'installation, utilisez le <a href="../../operateur/">Guide de l'opérateur</a>.</p>
+</blockquote>
+<hr />
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Compte Google Workspace avec accès au Drive et Gmail</li>
+<li>Accès administrateur au domaine (pour le script Apps Script)</li>
+<li>Le code source (10 fichiers <code>.js</code> dans le dossier <code>src/</code>)</li>
+</ul>
+<hr />
+<h2 id="etape-1-creer-le-classeur-google-sheets">Étape 1 : Créer le classeur Google Sheets<a class="headerlink" href="#etape-1-creer-le-classeur-google-sheets" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Créez un nouveau classeur Google Sheets</li>
+<li>Nommez-le : <strong>Facturation Accès Badminton</strong></li>
+<li>Notez l'URL — c'est votre espace de travail principal</li>
+</ol>
+<hr />
+<h2 id="etape-2-installer-le-code-apps-script">Étape 2 : Installer le code Apps Script<a class="headerlink" href="#etape-2-installer-le-code-apps-script" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Dans le classeur → <strong>Extensions → Apps Script</strong></li>
+<li>L'éditeur de script s'ouvre dans un nouvel onglet</li>
+<li>Supprimez le contenu par défaut du fichier <code>Code.gs</code></li>
+<li>Créez <strong>10 fichiers</strong> dans l'éditeur de script :</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Nom du fichier</th>
+<th>Source locale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Config.gs</code></td>
+<td><code>src/Config.js</code></td>
+</tr>
+<tr>
+<td><code>Inscriptions.gs</code></td>
+<td><code>src/Inscriptions.js</code></td>
+</tr>
+<tr>
+<td><code>FormHandler.gs</code></td>
+<td><code>src/FormHandler.js</code></td>
+</tr>
+<tr>
+<td><code>BillingTracker.gs</code></td>
+<td><code>src/BillingTracker.js</code></td>
+</tr>
+<tr>
+<td><code>Notifications.gs</code></td>
+<td><code>src/Notifications.js</code></td>
+</tr>
+<tr>
+<td><code>CreditNotes.gs</code></td>
+<td><code>src/CreditNotes.js</code></td>
+</tr>
+<tr>
+<td><code>DriveOrganizer.gs</code></td>
+<td><code>src/DriveOrganizer.js</code></td>
+</tr>
+<tr>
+<td><code>Menu.gs</code></td>
+<td><code>src/Menu.js</code></td>
+</tr>
+<tr>
+<td><code>Pricing.gs</code></td>
+<td><code>src/Pricing.js</code></td>
+</tr>
+<tr>
+<td><code>Roster.gs</code></td>
+<td><code>src/Roster.js</code></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Pour chaque fichier :</li>
+<li>Cliquez <strong>+</strong> → <strong>Script</strong></li>
+<li>Renommez le fichier (ex : <code>Config</code>)</li>
+<li>Copiez-collez le contenu du fichier source correspondant</li>
+<li>Supprimez le fichier <code>Code.gs</code> initial (vide)</li>
+<li>Cliquez <strong>💾 Enregistrer</strong> (Ctrl+S)</li>
+</ol>
+<hr />
+<h2 id="etape-3-executer-la-configuration-initiale">Étape 3 : Exécuter la configuration initiale<a class="headerlink" href="#etape-3-executer-la-configuration-initiale" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Retournez au classeur Google Sheets</li>
+<li>Rechargez la page (F5)</li>
+<li>Le menu <strong>🏸 Accès Badminton</strong> apparaît (peut prendre 5-10 secondes)</li>
+<li>Menu → <strong>🛠️ Configuration initiale</strong></li>
+<li>Google demandera des <strong>autorisations</strong> la première fois :</li>
+<li>Cliquez <strong>Continuer</strong></li>
+<li>Choisissez votre compte</li>
+<li>Cliquez <strong>Autoriser</strong></li>
+<li>Le système crée les 8 onglets avec les en-têtes</li>
+</ol>
+<hr />
+<h2 id="etape-4-configurer-les-valeurs">Étape 4 : Configurer les valeurs<a class="headerlink" href="#etape-4-configurer-les-valeurs" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Allez à l'onglet <strong>Configuration</strong></li>
+<li>Vérifiez et ajustez chaque valeur :</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Clé</th>
+<th>Valeur à mettre</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nom_org</code></td>
+<td>Nom de l'organisation</td>
+<td>Accès Badminton</td>
+</tr>
+<tr>
+<td><code>email_expediteur</code></td>
+<td>Courriel d'envoi</td>
+<td>info@accesbadminton.ca</td>
+</tr>
+<tr>
+<td><code>session_courante</code></td>
+<td>Session actuelle</td>
+<td>H2026</td>
+</tr>
+<tr>
+<td><code>cotisation_prix</code></td>
+<td>Prix de la cotisation</td>
+<td>20</td>
+</tr>
+<tr>
+<td><code>cotisation_description</code></td>
+<td>Texte sur la facture</td>
+<td>Cotisation membre</td>
+</tr>
+<tr>
+<td><code>cotisation_code_article</code></td>
+<td>Code article</td>
+<td>AB-COT</td>
+</tr>
+<tr>
+<td><code>adresse_org</code></td>
+<td>Adresse de l'organisation</td>
+<td>3355 Rue des Monarques...</td>
+</tr>
+<tr>
+<td><code>site_web</code></td>
+<td>URL du site</td>
+<td>https://accesbadminton.ca/</td>
+</tr>
+<tr>
+<td><code>dossier_factures_id</code></td>
+<td>ID du dossier Drive</td>
+<td>(voir étape 5)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="etape-5-creer-le-dossier-drive-pour-les-factures">Étape 5 : Créer le dossier Drive pour les factures<a class="headerlink" href="#etape-5-creer-le-dossier-drive-pour-les-factures" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Dans Google Drive, créez un dossier : <strong>Factures Accès Badminton</strong></li>
+<li>Copiez l'<strong>ID du dossier</strong> depuis l'URL :
+   <div class="highlight"><pre><span></span><code>https://drive.google.com/drive/folders/ABC123xyz...
+                                       ^^^^^^^^^^^
+                                       Ceci est l&#39;ID
+</code></pre></div></li>
+<li>Collez l'ID dans la Configuration → clé <code>dossier_factures_id</code></li>
+</ol>
+<hr />
+<h2 id="etape-6-configurer-les-tarifs">Étape 6 : Configurer les tarifs<a class="headerlink" href="#etape-6-configurer-les-tarifs" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Allez à l'onglet <strong>Tarifs</strong></li>
+<li>Vérifiez les 3 programmes pré-configurés (ajustez si les prix ont changé)</li>
+<li>Pour ajouter un programme, remplissez une nouvelle ligne :</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Contenu</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code article</td>
+<td>Code unique</td>
+<td>AB-ADT-ADV</td>
+</tr>
+<tr>
+<td>Clé programme</td>
+<td>Identifiant interne</td>
+<td>Jeudi H2026 Adulte</td>
+</tr>
+<tr>
+<td>Description facture</td>
+<td>Texte sur la facture</td>
+<td>Entraînement Adulte: Avancés/Compétitifs Jeudi H2026</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>Code session</td>
+<td>H2026</td>
+</tr>
+<tr>
+<td>Prix</td>
+<td>Prix en $</td>
+<td>350</td>
+</tr>
+<tr>
+<td>Mot-clé formulaire</td>
+<td>Texte à chercher dans la réponse du formulaire</td>
+<td>Avancés/Compétitifs Jeudi H2026</td>
+</tr>
+<tr>
+<td>Actif</td>
+<td>Oui/Non</td>
+<td>Oui</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="etape-7-creer-et-lier-le-formulaire-google">Étape 7 : Créer et lier le formulaire Google<a class="headerlink" href="#etape-7-creer-et-lier-le-formulaire-google" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Créez un <strong>formulaire Google</strong> avec les champs suivants (dans cet ordre) :</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Champ</th>
+<th>Type</th>
+<th>Requis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Prénom</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nom de famille</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Sexe</td>
+<td>Choix multiple</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Année de naissance</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Numéro de téléphone</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Numéro d'assurance maladie</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Date d'expiration assurance</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Nom contact urgence</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tél. contact urgence</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Adresse civile</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Ville</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Code postal</td>
+<td>Texte court</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Allergie</td>
+<td>Texte long</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Condition médicale</td>
+<td>Texte long</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Êtes-vous déjà membre?</td>
+<td>Choix multiple</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Choix d'activité</td>
+<td>Cases à cocher</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Consentement photo/vidéo</td>
+<td>Cases à cocher</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Consentement vie privée</td>
+<td>Cases à cocher</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Commentaires</td>
+<td>Texte long</td>
+<td>Non</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Activez <strong>Recueillir les adresses e-mail</strong> dans les paramètres du formulaire</li>
+<li>Dans l'onglet <strong>Réponses</strong> du formulaire → <strong>Lier à une feuille de calcul existante</strong> → sélectionnez le classeur de facturation</li>
+</ol>
+<hr />
+<h2 id="etape-8-configurer-le-declencheur">Étape 8 : Configurer le déclencheur<a class="headerlink" href="#etape-8-configurer-le-declencheur" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Dans le classeur → <strong>Extensions → Apps Script</strong></li>
+<li>Cliquez <strong>⏰ Déclencheurs</strong> (horloge dans le panneau gauche)</li>
+<li>Cliquez <strong>+ Ajouter un déclencheur</strong></li>
+<li>Configurez :</li>
+<li>Fonction : <strong>onFormSubmit</strong></li>
+<li>Source : <strong>Depuis la feuille de calcul</strong></li>
+<li>Type d'événement : <strong>Lors de l'envoi d'un formulaire</strong></li>
+<li>Cliquez <strong>Enregistrer</strong></li>
+</ol>
+<hr />
+<h2 id="etape-9-configurer-autocrat-5-jobs">Étape 9 : Configurer Autocrat (5 jobs)<a class="headerlink" href="#etape-9-configurer-autocrat-5-jobs" title="Permanent link">&para;</a></h2>
+<p>Suivez le <a href="../autocrat/">Guide Autocrat</a> pour configurer les 5 jobs.</p>
+<hr />
+<h2 id="etape-10-tests">Étape 10 : Tests<a class="headerlink" href="#etape-10-tests" title="Permanent link">&para;</a></h2>
+<h3 id="test-1-nouvelle-inscription">Test 1 : Nouvelle inscription<a class="headerlink" href="#test-1-nouvelle-inscription" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Soumettez une réponse test via le formulaire</li>
+<li>Vérifiez :</li>
+<li>✅ Ligne créée dans <strong>Réponses du formulaire</strong></li>
+<li>✅ Joueur créé dans <strong>Répertoire des joueurs</strong></li>
+<li>✅ Inscription(s) créée(s) dans <strong>Inscriptions</strong> (statut « En révision »)</li>
+</ol>
+<h3 id="test-2-cycle-complet">Test 2 : Cycle complet<a class="headerlink" href="#test-2-cycle-complet" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Acceptez l'inscription → <strong>Finaliser la révision</strong> → <strong>Générer la facture</strong></li>
+<li>Lancez Autocrat manuellement (Run chaque job)</li>
+<li>Vérifiez :</li>
+<li>✅ Notification de révision reçue par courriel</li>
+<li>✅ Facture PDF reçue par courriel</li>
+<li>✅ Statut passé à « Envoyé »</li>
+<li>✅ PDF dans le dossier Drive</li>
+</ol>
+<h3 id="test-3-paiement">Test 3 : Paiement<a class="headerlink" href="#test-3-paiement" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Changez le statut à <code>Payé</code>, entrez la date</li>
+<li>Run le job Autocrat « Accusé réception »</li>
+<li>✅ Accusé de réception reçu</li>
+</ol>
+<h3 id="test-4-refus-et-liste-dattente">Test 4 : Refus et liste d'attente<a class="headerlink" href="#test-4-refus-et-liste-dattente" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Soumettez un nouveau test</li>
+<li>Refusez un programme, mettez l'autre en attente, finalisez</li>
+<li>✅ Notification reçue avec les deux décisions</li>
+</ol>
+<h3 id="test-5-abandon">Test 5 : Abandon<a class="headerlink" href="#test-5-abandon" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Marquez une facture comme Abandonné</li>
+<li>Run le job « Avis d'abandon »</li>
+<li>✅ Courriel d'annulation reçu</li>
+</ol>
+<h3 id="test-6-note-de-credit">Test 6 : Note de crédit<a class="headerlink" href="#test-6-note-de-credit" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Émettez une note de crédit sur une facture payée</li>
+<li>Run le job « Note de crédit »</li>
+<li>✅ PDF de note de crédit reçu</li>
+</ol>
+<h3 id="nettoyage">Nettoyage<a class="headerlink" href="#nettoyage" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Supprimez les lignes de test dans tous les onglets</li>
+<li>Réinitialisez les compteurs dans <strong>Configuration</strong> (remettez tous les compteurs à <code>1</code>)</li>
+</ol>
+<hr />
+<h2 id="verification-finale">Vérification finale<a class="headerlink" href="#verification-finale" title="Permanent link">&para;</a></h2>
+<p>Menu → <strong>🔧 Outils → ⚙️ Vérifier la configuration</strong></p>
+<p>Tous les éléments doivent afficher ✅. Corrigez tout ce qui affiche ❌.</p>
+<p>Le système est prêt pour la production.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+        
+          
+          <a href="../../operateur/depannage/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Dépannage">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              <div class="md-ellipsis">
+                Dépannage
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../autocrat/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Autocrat (5 jobs)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              <div class="md-ellipsis">
+                Autocrat (5 jobs)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
