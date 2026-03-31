@@ -1,0 +1,32 @@
+:root > * {
+  /* Primary color - Teal from acces-badminton-site */
+  --md-primary-fg-color:        hsl(178, 55.3%, 68.4%); /* #79CEC9 */
+  --md-primary-fg-color--light: hsl(178, 55.3%, 90%);
+  --md-primary-fg-color--dark:  hsl(178, 55.3%, 45%);
+  --md-primary-bg-color:        #ffffff;
+  --md-primary-bg-color--light: #ffffff;
+
+  /* Accent color - Coral/Rose from acces-badminton-site */
+  --md-accent-fg-color:         hsl(349.2, 71.9%, 65.1%); /* #E06B7D */
+  --md-accent-fg-color--transparent: hsla(349.2, 71.9%, 65.1%, 0.1);
+  --md-accent-bg-color:         #ffffff;
+  --md-accent-bg-color--light:  #ffffff;
+}
+
+[data-md-color-scheme="slate"] {
+  /* Primary color for dark mode */
+  --md-primary-fg-color:        hsl(178, 55.3%, 68.4%);
+  --md-primary-fg-color--light: hsl(178, 55.3%, 90%);
+  --md-primary-fg-color--dark:  hsl(178, 55.3%, 45%);
+  --md-primary-bg-color:        #212529; /* dark background */
+  --md-primary-bg-color--light: #212529;
+
+  /* Accent color for dark mode */
+  --md-accent-fg-color:         hsl(349.2, 71.9%, 65.1%);
+  --md-accent-fg-color--transparent: hsla(349.2, 71.9%, 65.1%, 0.1);
+}
+
+/* Ensure the logo on dark theme looks fine with the grey background, maybe add some subtle rounding */
+.md-logo img {
+  border-radius: 4px;
+}

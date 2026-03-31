@@ -8,14 +8,14 @@ theme:
   language: fr
   palette:
     - scheme: default
-      primary: green
-      accent: lime
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Mode sombre
     - scheme: slate
-      primary: green
-      accent: lime
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Mode clair
@@ -32,9 +32,13 @@ theme:
     - search.highlight
     - content.tabs.link
     - content.code.copy
+  logo: assets/images/onibad_logo.jpg
+  favicon: assets/images/onibad_logo.jpg
   icon:
-    logo: material/badminton
     repo: fontawesome/brands/github
+
+extra_css:
+  - stylesheets/extra.css
 
 extra:
   generator: false
@@ -55,6 +59,7 @@ markdown_extensions:
   - tables
   - attr_list
   - def_list
+  - md_in_html
   - toc:
       permalink: true
       toc_depth: 3
